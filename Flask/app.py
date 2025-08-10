@@ -63,9 +63,10 @@ def pred():
         
         prediction = model.predict(input_features)
         
-        prediction_value = round(prediction[0], 4)
+        prediction_value = prediction[0] * 100 
+        prediction_percentage = f"{prediction_value:.4f}%"
         
-        return render_template('submit.html', prediction=prediction_value)
+        return render_template('submit.html', prediction=prediction_percentage)
         
     except Exception as e:
         error_message = f"Error in prediction: {str(e)}"
